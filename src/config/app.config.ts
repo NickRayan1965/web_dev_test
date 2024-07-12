@@ -14,6 +14,7 @@ export default registerAs(
       username: process.env.DB_USERNAME,
     },
     jwt_secret: process.env.JWT_SECRET,
+    jwt_expires_in: process.env.JWT_EXPIRES_IN,
     queryDefaults: {
       page: +process.env.DEFAULT_PAGE,
       page_size: +process.env.DEFAULT_PAGE_SIZE,
