@@ -1,10 +1,16 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class User {
+  @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number;
 
+  @ApiProperty({
+    nullable: true,
+    maxLength: 100,
+  })
   @Column({
     type: 'varchar',
     nullable: true,
@@ -12,6 +18,10 @@ export class User {
   })
   name: string;
 
+  @ApiProperty({
+    nullable: true,
+    maxLength: 100,
+  })
   @Column({
     type: 'varchar',
     nullable: true,
@@ -19,13 +29,23 @@ export class User {
   })
   lastname: string;
 
+  @ApiProperty({
+    nullable: false,
+    maxLength: 50,
+    description: 'Campo Unico',
+  })
   @Column({
     type: 'varchar',
-    nullable: true,
+    nullable: false,
     length: 50,
+    unique: true,
   })
   username: string;
 
+  @ApiProperty({
+    nullable: true,
+    maxLength: 200,
+  })
   @Column({
     type: 'varchar',
     nullable: true,
@@ -33,6 +53,10 @@ export class User {
   })
   email: string;
 
+  @ApiProperty({
+    nullable: false,
+    maxLength: 100,
+  })
   @Column({
     type: 'varchar',
     nullable: false,
@@ -40,6 +64,10 @@ export class User {
   })
   password: string;
 
+  @ApiProperty({
+    nullable: false,
+    default: true,
+  })
   @Column({
     type: 'boolean',
     nullable: false,
