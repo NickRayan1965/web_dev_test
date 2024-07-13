@@ -20,9 +20,9 @@ import appConfig from 'src/config/app.config';
           ssl: true,
           entities: [__dirname + '/../**/*.entity{.ts,.js}'],
           //para dev
-          autoLoadEntities: true,
-          dropSchema: true,
-          synchronize: true,
+          autoLoadEntities: false,
+          dropSchema: false,
+          synchronize: false,
         };
       },
     }),
