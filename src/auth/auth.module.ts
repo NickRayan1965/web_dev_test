@@ -7,6 +7,7 @@ import { UserModule } from 'src/modules/user/user.module';
 import { AuthController } from './controllers/auth.controller';
 import { AuthService } from './services/auth.service';
 import { JwtStrategy } from './strategies/jwt-strategy';
+import { UniqueConstraintValidator } from 'src/common/decorators/unique-constraint.decorator';
 
 @Module({
   imports: [
@@ -27,7 +28,7 @@ import { JwtStrategy } from './strategies/jwt-strategy';
     UserModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy],
+  providers: [AuthService, JwtStrategy, UniqueConstraintValidator],
   exports: [JwtStrategy, PassportModule, JwtModule, AuthService],
 })
 export class AuthModule {}

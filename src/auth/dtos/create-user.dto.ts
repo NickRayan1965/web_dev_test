@@ -1,7 +1,18 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsEmail, IsOptional, IsString, MaxLength } from 'class-validator';
 import { AllowNulls } from 'src/common/decorators/allow-null.decorator';
+import { UniqueConstraints } from 'src/common/decorators/unique-constraint.decorator';
+import { User } from 'src/modules/user/entities/user.entity';
 
+@UniqueConstraints<User>({
+  entity: User,
+  constraints: [
+    {
+      fields: ['username'],
+      message: 'Ya existe un usuario con el nombre de usuario ingresado',
+    },
+  ],
+})
 export class CreateUserDto {
   @ApiPropertyOptional({
     nullable: true,
