@@ -4,11 +4,11 @@ import { User } from '../entities/user.entity';
 import { Repository } from 'typeorm';
 import { ConfigType } from '@nestjs/config';
 import appConfig from 'src/config/app.config';
-import { Paginable } from 'src/common/dto/paginable.interface';
 import { GetDataQueryParamsDto } from 'src/common/dto/get-data-query-params.dto';
 import { UpdateUserDto } from '../dtos/update-user.dto';
 import { Encrypter } from 'src/common/utilities/encrypter';
 import { handleExceptions } from 'src/common/errors/handleExceptions';
+import { PaginableOfUsers } from '../dtos/paginable-of-users.dto';
 
 @Injectable()
 export class UserService {
@@ -19,7 +19,7 @@ export class UserService {
     private readonly configService: ConfigType<typeof appConfig>,
   ) {}
 
-  async findAll(query: GetDataQueryParamsDto): Promise<Paginable<User>> {
+  async findAll(query: GetDataQueryParamsDto): Promise<PaginableOfUsers> {
     const { queryDefaults } = this.configService;
     const { page = queryDefaults.page, count = queryDefaults.page_size } =
       query;
