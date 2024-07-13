@@ -11,9 +11,12 @@ import {
 import { UserService } from '../services/user.service';
 import { GetDataQueryParamsDto } from 'src/common/dto/get-data-query-params.dto';
 import { UpdateUserDto } from '../dtos/update-user.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { Auth } from 'src/auth/decorators/auth.decorator';
 
 @ApiTags('User')
+@ApiBearerAuth()
+@Auth()
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}

@@ -17,6 +17,7 @@ import appConfig from 'src/config/app.config';
           username,
           password,
           database,
+          ssl: true,
           entities: [__dirname + '/../**/*.entity{.ts,.js}'],
           //para dev
           autoLoadEntities: true,
