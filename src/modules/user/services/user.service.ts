@@ -27,6 +27,9 @@ export class UserService {
       where: { isActive: true },
       take: count,
       skip: count * (page - queryDefaults.min_page),
+      order: {
+        id: 'DESC',
+      },
     });
     return {
       data,
